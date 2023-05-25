@@ -1,7 +1,6 @@
 Create a table for students:
 
-sql
-Copy code
+
 CREATE TABLE students (
   id INT PRIMARY KEY,
   name VARCHAR(255),
@@ -10,8 +9,7 @@ CREATE TABLE students (
 );
 Create a table for teachers:
 
-sql
-Copy code
+
 CREATE TABLE teachers (
   id INT PRIMARY KEY,
   name VARCHAR(255),
@@ -22,49 +20,41 @@ CRUD Operations:
 
 Create a new student:
 
-sql
-Copy code
+
 INSERT INTO students (id, name, email, age)
 VALUES (1, 'John Doe', 'john.doe@example.com', 20);
 Read student information:
 
-sql
-Copy code
+
 SELECT * FROM students;
 Update student information:
 
-sql
-Copy code
+
 UPDATE students
 SET name = 'Jane Smith', age = 22
 WHERE id = 1;
 Delete a student:
 
-sql
-Copy code
+
 DELETE FROM students
 WHERE id = 1;
 Create a new teacher:
 
-sql
-Copy code
+
 INSERT INTO teachers (id, name, email, subject)
 VALUES (1, 'Jane Smith', 'jane.smith@example.com', 'Mathematics');
 Read teacher information:
 
-sql
-Copy code
+
 SELECT * FROM teachers;
 Update teacher information:
 
-sql
-Copy code
+
 UPDATE teachers
 SET name = 'John Doe', subject = 'Physics'
 WHERE id = 1;
 Delete a teacher:
 
-sql
-Copy code
+
 DELETE FROM teachers
 WHERE id = 1;
