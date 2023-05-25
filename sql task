@@ -1,106 +1,70 @@
-users
-CREATE TABLE users (
-  id INTEGER PRIMARY KEY,
-  username varchar(50) NOT NULL
+Create a table for students:
+
+sql
+Copy code
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(255),
+  email VARCHAR(255),
+  age INT
 );
-INSERT into users
-VALUES (1,'hari'),(2,'sudhan'),(3,'suba'),(4,'tanvika'),(5,'ajeeth'),(6,'priya'),(7,'sumathi');
+Create a table for teachers:
 
-codekata
-CREATE TABLE codekata (
-   user_id INTEGER PRIMARY KEY,
-   no_of_problems_solved INTEGER
+sql
+Copy code
+CREATE TABLE teachers (
+  id INT PRIMARY KEY,
+  name VARCHAR(255),
+  email VARCHAR(255),
+  subject VARCHAR(255)
 );
-INSERT into codekata
-VALUES (1,20),(2,29),(3,22),(4,25),(5,26),(6,30),(7,27);
+CRUD Operations:
 
-attendance
-CREATE TABLE attendance (
-  user_id INTEGER PRIMARY KEY,
-  attendance INTEGER
-);
-INSERT into  attendance
-VALUES (1,45),(2,43),(3,45),(4,45),(5,40),(6,41),(7,243);
+Create a new student:
 
-topics
-CREATE TABLE topics (
-  topics varchar(50),
-  user_id INTEGER
-);
-INSERT into  topics
-VALUES ('JAVASCRIPT',1),('JAVASCRIPT',2),('JAVASCRIPT',3),
-('css',4),('html',5),('Functions',6),('REACT',7),('REACT',4),('JAVASCRIPT',4),('html',5),('css',1);
+sql
+Copy code
+INSERT INTO students (id, name, email, age)
+VALUES (1, 'John Doe', 'john.doe@example.com', 20);
+Read student information:
 
-tasks
-CREATE TABLE tasks (
-  tasks varchar(50),
-  user_id INTEGER
-);
-INSERT into  tasks
-VALUES ('todolist',1),('todolist',5),('dashboard',3),
-('sql',4),('dashboard',5),('sql',6),('REACT',7),('mongodb',4),('movielist',4),('nodejs',5),('movielist',1);
+sql
+Copy code
+SELECT * FROM students;
+Update student information:
 
+sql
+Copy code
+UPDATE students
+SET name = 'Jane Smith', age = 22
+WHERE id = 1;
+Delete a student:
 
-company_drives
-CREATE TABLE company_drives (
-  company_drives varchar(50),
-  user_id INTEGER
-);
-INSERT into  company_drives
-VALUES ('guvi',1),('guvi',2),('freshworks',3),
-('TCS',4),('google',5),('google',6),('paytm',7),('paypal',4),('paytm',4),('TCS',5),('freshworks',1),('guvi',7),('CTS',1),('google',3);
+sql
+Copy code
+DELETE FROM students
+WHERE id = 1;
+Create a new teacher:
 
-mentors
-CREATE TABLE mentors (
-  mentors varchar(50),
-  user_id INTEGER
-);
-INSERT into  mentors
-VALUES ('lavish',1),('lavish',3),('lavish',7),('lavish',6),('ragav',5),('ragav',4),('ragav',2);
+sql
+Copy code
+INSERT INTO teachers (id, name, email, subject)
+VALUES (1, 'Jane Smith', 'jane.smith@example.com', 'Mathematics');
+Read teacher information:
 
-students_activated_courses
-CREATE TABLE students_activated_courses (
-  courses varchar(50),
-  user_id INTEGER
-);
-INSERT into students_activated_courses
-VALUES ('DATA_SCIENCE',1),('MERN',3),('MERN',7),('MEAN',6),('CYBER_SECURITY',5),('CYBER_SECURITY',4),('DATA_SCIENCE',2);
+sql
+Copy code
+SELECT * FROM teachers;
+Update teacher information:
 
-courses
-CREATE TABLE courses (
-  courses varchar(50),
-  id INTEGER PRIMARY KEY
-);
-INSERT into courses
-VALUES ('DATA_SCIENCE',1),('MERN',2),('MEAN',3),('CYBER_SECURITY',4),('MACHINE-LEARNING',5);
+sql
+Copy code
+UPDATE teachers
+SET name = 'John Doe', subject = 'Physics'
+WHERE id = 1;
+Delete a teacher:
 
-3.get number problems solved in codekata by combining the users
-
-SELECT SUM(codekata.no_of_problems_solved) as total_problems_solved 
-from codekata 
-
-4.display the no of company drives attended by a user
-
-SELECT username , count(company_drives)FROM users
-inner join company_drives
-where users.id=company_drives.user_id
-group by users.username
-
-5.combine and display students_activated_courses and courses for a specific user groping them based on the course
-
-SELECT * FROM courses
-LEFT JOIN (SELECT username,courses FROM users 
-INNER JOIN students_activated_courses
-ON users.id = students_activated_courses.user_id) as userCourse
-ON courses.courses = userCourse.courses
-
-6. list all the mentors
-
-SELECT DISTINCT mentors mentors;
-
-7. list the number of students that are assigned for a mentor 
-
-SELECT mentors,COUNT(userName) as no_of_students from users
-INNER JOIN mentors
-ON users.id = mentors.user_id
-GROUP BY mentors
+sql
+Copy code
+DELETE FROM teachers
+WHERE id = 1;
